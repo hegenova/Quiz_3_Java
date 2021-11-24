@@ -2,15 +2,15 @@ package predictive;
 
 import java.util.*;
 import java.io.*;
-import java.nio.*;
-
 
 public class PredictivePrototype{
 	
-	
-	
+//The method reads the string character by character in a for loop 
+//and uses the conditional to append each letter until it outputs a numeric signature.	
     public static String wordToSignature(String word){
         StringBuffer strb= new StringBuffer();
+        //Here, StringBuffer is used because String is too slow, consumes more memory, and uses the string pool,
+        //while Stringbuffer is faster, consumes less memory, and uses the heap memory.
         word = word.toLowerCase();
        int length=word.length();
       for(int i=0; i<length; i++){
@@ -46,11 +46,16 @@ public class PredictivePrototype{
        return res;
     }
     
+ 
+    //the method first scans the whole dictionary, 
+    //and then uses a while loop to compare the scanned word's numeric signature with the numeric signature input.
+    //if the signatures are the same, the word is stored in a set.
     public static Set<String> signatureToWords(String signature) throws FileNotFoundException{
     	
-    	HashSet<String> set = new HashSet<String>();
+    	Set<String> set = new TreeSet<String>();
     	
-    	
+    	//using the scanner only reads the file.
+    	//storing the dictionary will be inefficient, as it will be used repeatedly.
     	FileInputStream fis = new FileInputStream("D:\\Program\\eclipse\\workspace\\words");   //change depending on words file location    
     	Scanner scan = new Scanner(fis);
         
@@ -58,11 +63,12 @@ public class PredictivePrototype{
 			
 			String i = scan.nextLine();
 			
-			boolean check = isValidWord (i);
+			//checks whether the word has non-alphanumeric characters or not
+			boolean check = isValidWord(i);
 			if (check == false) continue;
 			
-			String sgn = PredictivePrototype.wordToSignature(i);
-			if (sgn.equals(signature)) {
+			String sig = PredictivePrototype.wordToSignature(i);
+			if (sig.equals(signature)) {
 				set.add(i);
 			}
 		}
@@ -71,10 +77,11 @@ public class PredictivePrototype{
 		return set;
    }
 
+  //the helper method to check whether the word has non-alphanumeric characters or not
     private static boolean isValidWord(String word) {
     	char[] charArray = word.toCharArray();
         for(char c :charArray){
-            if (!Character.isLetterOrDigit(c)) return false;
+            if (!Character.isLetter(c)) return false;
         }
         return true;
     	
@@ -87,4 +94,4 @@ public class PredictivePrototype{
         System.out.println(signatureToWords("4663"));
     }
 
-}  
+} 
