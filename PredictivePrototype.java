@@ -48,11 +48,11 @@ public class PredictivePrototype{
     
     public static Set<String> signatureToWords(String signature) throws FileNotFoundException{
     	
-    	Set<String> set = new TreeSet<String>();
+    	HashSet<String> set = new HashSet<String>();
     	
     	
-    	File file = new File("words");
-        Scanner scan = new Scanner(file);
+    	FileInputStream fis = new FileInputStream("D:\\Program\\eclipse\\workspace\\words");   //change depending on words file location    
+    	Scanner scan = new Scanner(fis);
         
 		while (scan.hasNextLine()) {
 			
@@ -65,8 +65,9 @@ public class PredictivePrototype{
 			if (sig.equals(signature)) {
 				set.add(i);
 			}
-			 scan.close();
 		}
+		
+		scan.close();
 		return set;
    }
 
@@ -83,7 +84,7 @@ public class PredictivePrototype{
     public static void main(String[] args) throws FileNotFoundException{
     	   
         System.out.println(wordToSignature("home"));
-        System.out.println(signatureToWords("home"));
+        System.out.println(signatureToWords("4663"));
     }
 
-}
+}  
