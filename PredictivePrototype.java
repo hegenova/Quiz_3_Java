@@ -61,8 +61,8 @@ public class PredictivePrototype{
 			boolean check = isValidWord (i);
 			if (check == false) continue;
 			
-			String sig = PredictivePrototype.wordToSignature(i);
-			if (sig.equals(signature)) {
+			String sgn = PredictivePrototype.wordToSignature(i);
+			if (sgn.equals(signature)) {
 				set.add(i);
 			}
 		}
