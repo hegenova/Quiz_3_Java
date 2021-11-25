@@ -9,8 +9,9 @@ public class PredictivePrototype{
 //and uses the conditional to append each letter until it outputs a numeric signature.	
     public static String wordToSignature(String word){
         StringBuffer strb= new StringBuffer();
-        //Here, StringBuffer is used because String is too slow, consumes more memory, and uses the string pool,
-        //while Stringbuffer is faster, consumes less memory, and uses the heap memory.
+        //using stringbuffer in here is more efficient because
+        //string buffer speciality which give flexibility to string manipulation
+        //as the class itself with many method it provides
         word = word.toLowerCase();
        int length=word.length();
       for(int i=0; i<length; i++){
