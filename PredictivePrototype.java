@@ -68,6 +68,9 @@ public class PredictivePrototype{
 			boolean check = isValidWord(i);
 			if (check == false) continue;
 			
+			//converts the scanned word to lowercase
+			i = i.toLowerCase();
+			
 			String sig = PredictivePrototype.wordToSignature(i);
 			if (sig.equals(signature)) {
 				set.add(i);
