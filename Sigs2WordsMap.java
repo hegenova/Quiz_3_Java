@@ -9,7 +9,7 @@ import java.util.Set;
 public class Sigs2WordsMap {
     public static void main(String[] args) throws FileNotFoundException {
         ArrayList<String> list;
-        new DictionaryMapImpl();
+        DictionaryMapImpl baru = new DictionaryMapImpl();
 		
 		if (args.length == 0) {
 			list = new ArrayList<String>();		
@@ -26,7 +26,7 @@ public class Sigs2WordsMap {
 		
 		if (list.isEmpty() == false) {
 			 for (String s: list) {
-				Set<String> words = DictionaryMapImpl.signatureToWords(s);
+				Set<String> words = baru.signatureToWords(s);
 				System.out.println(s + " : " + words);
 			 	}
 			}
