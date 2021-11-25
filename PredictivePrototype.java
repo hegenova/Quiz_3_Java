@@ -9,8 +9,9 @@ public class PredictivePrototype{
 //and uses the conditional to append each letter until it outputs a numeric signature.	
     public static String wordToSignature(String word){
         StringBuffer strb= new StringBuffer();
-        //Here, StringBuffer is used because String is too slow, consumes more memory, and uses the string pool,
-        //while Stringbuffer is faster, consumes less memory, and uses the heap memory.
+        //using stringbuffer in here is more efficient because
+        //string buffer speciality which give flexibility to string manipulation
+        //as the class itself with many method it provides
         word = word.toLowerCase();
        int length=word.length();
       for(int i=0; i<length; i++){
@@ -52,12 +53,12 @@ public class PredictivePrototype{
     //if the signatures are the same, the word is stored in a set.
     public static Set<String> signatureToWords(String signature) throws FileNotFoundException{
     	
-    	Set<String> set = new TreeSet<String>();
+    	Set<String> set = new HashSet<String>();
     	
     	//using the scanner only reads the file.
     	//storing the dictionary will be inefficient, as it will be used repeatedly.
-    	FileInputStream fis = new FileInputStream("D:\\Program\\eclipse\\workspace\\words");   //change depending on words file location    
-    	Scanner scan = new Scanner(fis);
+    	FileInputStream input = new FileInputStream("./words");   //change depending on words file location    
+    	Scanner scan = new Scanner(input);
         
 		while (scan.hasNextLine()) {
 			
@@ -66,6 +67,9 @@ public class PredictivePrototype{
 			//checks whether the word has non-alphanumeric characters or not
 			boolean check = isValidWord(i);
 			if (check == false) continue;
+			
+			//converts the scanned word to lowercase
+			i = i.toLowerCase();
 			
 			String sig = PredictivePrototype.wordToSignature(i);
 			if (sig.equals(signature)) {
