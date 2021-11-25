@@ -10,7 +10,7 @@ public class Words2SigProto {
 	
 	public static void main(String[]args) {
 	ArrayList<String> list;
-			
+	new PredictivePrototype();		
 		if (args.length == 0) {
 			list = new ArrayList<String>();		
 			Scanner scan = new Scanner(System.in);
@@ -26,7 +26,7 @@ public class Words2SigProto {
 			
 		if (list.isEmpty()==false) {
 			for (String s: list) {
-				System.out.println(PredictivePrototype.wordToSignature(s));
+				System.out.println(s + " : " + PredictivePrototype.wordToSignature(s));
 				}
 			}
 		}
