@@ -52,12 +52,12 @@ public class PredictivePrototype{
     //if the signatures are the same, the word is stored in a set.
     public static Set<String> signatureToWords(String signature) throws FileNotFoundException{
     	
-    	Set<String> set = new TreeSet<String>();
+    	Set<String> set = new HashSet<String>();
     	
     	//using the scanner only reads the file.
     	//storing the dictionary will be inefficient, as it will be used repeatedly.
-    	FileInputStream fis = new FileInputStream("D:\\Program\\eclipse\\workspace\\words");   //change depending on words file location    
-    	Scanner scan = new Scanner(fis);
+    	FileInputStream input = new FileInputStream("./words");   //change depending on words file location    
+    	Scanner scan = new Scanner(input);
         
 		while (scan.hasNextLine()) {
 			
